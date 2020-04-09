@@ -7,10 +7,11 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class CustomerTest < MiniTest::Test
 
-  def initialize()
+  def setup()
     @ace_hearts = Card.new('suit'=>'Hearts', 'value' =>1)
     @two_spades = Card.new('suit'=>'Spades', 'value' =>2)
-    @cards = [@ace_hearts, @two_spades]
+    @three_diamonds = Card.new('suit'=>'Diamonds', 'value'=>3)
+    @cards = [@ace_hearts, @two_spades, @three_diamonds]
   end
 
   def test_card_equals_one()
@@ -21,16 +22,16 @@ class CustomerTest < MiniTest::Test
     assert_equal(false, Cards.check_for_ace(@two_spades))
   end
 
-  def test_highest_card_card1_greater_then_card2()
-    assert_equal(true, Cards.highest_card(@two_spades, @ace_hearts))
+  def test_highest_card_two_spades_greater_then_ace_hearts()
+    assert_equal(@two_spades, Cards.highest_card(@two_spades, @ace_hearts))
   end
 
-  def test_highest_card_card2_greater_then_card1()
-    assert_equal(true, Cards.highest_card(@ace_hearts, @two_spades))
+  def test_highest_card_three_diamonds_greater_then_two_spades()
+    assert_equal(@three_diamonds, Cards.highest_card(@three_diamonds, @two_spades))
   end
 
   def test_cards_total_where_total_is_three()
-    assert_equal(3, Cards.card_total(@cards))
+    assert_equal("You have a total of 6", Cards.card_total(@cards))
   end
 
 end

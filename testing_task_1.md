@@ -29,6 +29,7 @@ class CardGame
   else
     return card2
   end
+  #if statement should be indented more than def.
 end
 end # This should sit at the end of the code as the end of the class.
 
@@ -38,8 +39,10 @@ def self.cards_total(cards)
     total += card.value
     return "You have a total of" + total # should encompass in double quotes and use #{} for total
   # return "You have a total of #{total}"
+  # this return line should sit after the end of the for loop and before the end for the method.
 
   end
 end
+#the method should be indented more than the class (one more tab indent)
 # there should be an 'end' for the end of the CardGame class definition
 ```
